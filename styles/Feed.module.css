@@ -1,0 +1,30 @@
+.main {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.link {
+  text-decoration: none;
+  font-family: georgia, "times new roman", times, serif;
+  color: black;
+  transition-duration: 0.3s;
+}
+.img {
+  width: 100%;
+}
+.link:hover {
+  opacity: 60%;
+}
+.section {
+  width: 500px;
+  margin: 30px;
+  height: auto;
+}
+.title {
+  font-size: 1.3rem;
+}
+.desc {
+  font-size: 0.8rem;
+}

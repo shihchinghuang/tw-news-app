@@ -1,0 +1,29 @@
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: #6eac7d 1px double;
+}
+.main div {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+.main div div {
+  padding: 25px;
+}
+.link {
+  text-decoration: none;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: black;
+}
+
+.link:hover {
+  color: rgb(168, 168, 168);
+}
+.img {
+  background-color: #6eac7d;
+  border-radius: 50%;
+  margin-top: 25px;
+}
