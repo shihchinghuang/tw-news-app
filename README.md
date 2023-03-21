@@ -16,6 +16,7 @@ This website aims to source the content of news and information which include th
 * Used third-party libraries including [Axios](https://axios-http.com/docs/intro), [Nodemailer](https://nodemailer.com/about/), [React Hook Form](https://react-hook-form.com/), [react-live-clock](https://www.npmjs.com/package/react-live-clock), and so on
 
 ## Setup
+Running locally in development mode - to get started, clone the repository and run `npm install` and `npm run dev`:
 ```
 $ git clone https://github.com/shihchinghuang/tw-news-app.git
 $ npm install
