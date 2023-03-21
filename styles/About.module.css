@@ -1,0 +1,89 @@
+.container {
+  width: 40%;
+  margin: auto;
+  margin-top: 50px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.container p {
+  margin: 0;
+}
+.container a {
+  text-decoration: none;
+  border-bottom: 1px #6eac7d solid;
+  border-width: medium;
+  color: black;
+  padding-bottom: 2px;
+}
+.container p span {
+  cursor: pointer;
+  border-bottom: 1px #6eac7d solid;
+  border-width: medium;
+  padding-bottom: 2px;
+}
+.form_container {
+  margin-top: 50px;
+  background-color: #6eac7d;
+  border-radius: 13px;
+  padding: 40px;
+  height: 350px;
+  margin-bottom: 100px;
+}
+
+.form_container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 100%;
+  margin: auto;
+}
+
+.form_container form input,
+.form_container form textarea {
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #6eac7d;
+}
+.form_container form textarea {
+  margin-bottom: 5px;
+}
+
+.form_container form input::placeholder,
+.form_container form textarea::placeholder {
+  color: #6eac7d;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 0.9rem;
+}
+.form_container form input:focus,
+.form_container form textarea:focus {
+  outline: none;
+}
+
+.form_container button {
+  margin-top: 30px;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+  color: #6eac7d;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: ease 0.3s;
+  border: 1px transparent solid;
+}
+.form_container button:hover {
+  background-color: #6eac7d;
+  color: white;
+  border: 1px white solid;
+}
+.form_container span {
+  color: white;
+}
+#emailErrMsg {
+  margin-top: -15px;
+  margin-bottom: 5px;
+}

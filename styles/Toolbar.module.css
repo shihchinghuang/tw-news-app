@@ -23,9 +23,10 @@
   text-decoration: none;
   font-family: Georgia, "Times New Roman", Times, serif;
   color: black;
+  transition: ease 0.1s;
 }
 .link:hover {
-  color: rgb(168, 168, 168);
+  color: #6eac7d;
 }
 .img {
   background-color: #6eac7d;
