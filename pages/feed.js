@@ -51,10 +51,9 @@ export const getServerSideProps = async () => {
   );
   const apiJson = await apiResponse.json();
   let { articles } = apiJson;
-  articles = articles.filter((article) => {
-    return article.urlToImage && article.title.includes("Taiwan");
-  });
-  console.log(articles);
+  articles = articles.filter(
+    (article) => article.urlToImage && article.title.includes("Taiwan")
+  );
   return {
     props: { articles },
   };

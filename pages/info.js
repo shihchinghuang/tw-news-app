@@ -52,9 +52,7 @@ export default function Info({ data }) {
     </>
   );
 }
-let date = new Date().toLocaleString("en-US", { timeZone: "Asia/Taipei" });
-console.log(date); // 6/17/2022
-// city id 1668341
+
 export async function getServerSideProps() {
   const res = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=25.105497&lon=121.597366&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}&units=metric`
