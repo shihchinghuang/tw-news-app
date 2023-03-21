@@ -1,25 +1,31 @@
 import Toolbar from "../components/toolbar";
 import styles from "../styles/Feed.module.css";
-
+import ClockTime from "../components/clockTime";
 export default function Feed({ articles }) {
   return (
     <>
       <Toolbar />
+      <ClockTime />
       <div className={styles.main}>
         {articles.map((article, index) => {
           return (
             <>
-              <div className={styles.section}>
+              <div className={styles.section} key={index}>
                 <a className={styles.link} href={article.url} target="_blank">
-                  <h1 className={styles.title} key={index}>
-                    {article.title}
-                  </h1>
+                  <h1 className={styles.title}>{article.title}</h1>
                   <p className={styles.desc}>{article.description}</p>
+
                   <img
                     className={styles.img}
                     src={article.urlToImage}
                     alt="photo"
                   />
+                  <div className={styles.footer}>
+                    <p>
+                      {article.publishedAt.split("T").join(" ").slice(0, 16)}
+                    </p>
+                    <p>{article.source.name}</p>
+                  </div>
                 </a>
               </div>
             </>
@@ -31,11 +37,10 @@ export default function Feed({ articles }) {
 }
 
 export const getServerSideProps = async () => {
-  const date = new Date();
+  let date = new Date();
   let day = date.getDate() - 1;
   let month = date.getMonth() + 1;
   let year = date.getFullYear();
-
   const apiResponse = await fetch(
     `https://newsapi.org/v2/everything?q=taiwan&from=${year}-${month}-${day}&language=en&sortBy=popularity`,
     {
@@ -49,6 +54,7 @@ export const getServerSideProps = async () => {
   articles = articles.filter((article) => {
     return article.urlToImage && article.title.includes("Taiwan");
   });
+  console.log(articles);
   return {
     props: { articles },
   };

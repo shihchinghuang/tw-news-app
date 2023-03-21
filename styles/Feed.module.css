@@ -10,21 +10,29 @@
   font-family: georgia, "times new roman", times, serif;
   color: black;
   transition-duration: 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  width: 500px;
 }
 .img {
-  width: 100%;
+  height: 100%;
+  width: 500px;
 }
 .link:hover {
   opacity: 60%;
 }
 .section {
-  width: 500px;
   margin: 30px;
-  height: auto;
 }
 .title {
   font-size: 1.3rem;
 }
 .desc {
   font-size: 0.8rem;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
 }

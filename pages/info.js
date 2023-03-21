@@ -1,37 +1,69 @@
 import Toolbar from "../components/toolbar";
-
-export default function About() {
+import ClockTime from "../components/clockTime";
+import moment from "moment";
+import Image from "next/image";
+import styles from "../styles/Info.module.css";
+export default function Info({ data }) {
   return (
     <>
       <Toolbar></Toolbar>
-      <p>Hi there!</p>
-      <p>Would love to connect through</p>
+      <ClockTime />
+      <div className={styles.container}>
+        <div className={styles.left}>
+          <p className={styles.location}>Taipei City, Taiwan</p>
+          <p className={styles.temp}>
+            {Math.round(data.main.temp * 10) / 10}&deg;C
+          </p>
+          <div className={styles.flex_wrap}>
+            <p className={styles.desc}>Highest</p>
+            <p className={styles.desc}>Lowest</p>
+          </div>
+          <div className={styles.flex_wrap}>
+            <p className={styles.temp_max}>
+              {Math.round(data.main.temp_max * 10) / 10}&deg;C
+            </p>
+            <p className={styles.temp_min}>
+              {Math.round(data.main.temp_min * 10) / 10}&deg;C
+            </p>
+          </div>
+          <div className={styles.flex_wrap}>
+            <p className={styles.desc}>Sunrise</p>
+            <p className={styles.desc}>Sunset</p>
+          </div>
+          <div className={styles.flex_wrap}>
+            <p className={styles.sun}>
+              {moment.unix(data.sys.sunrise).tz("Asia/Taipei").format("LT")}
+            </p>
+            <p className={styles.sun}>
+              {moment.unix(data.sys.sunset).tz("Asia/Taipei").format("LT")}
+            </p>
+          </div>
+        </div>
+        <div className={styles.right}>
+          <Image
+            src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
+            width={100}
+            height={100}
+            alt="Weather Icon"
+          />
+          <p className={styles.weather}>{data.weather[0].main}</p>
+        </div>
+      </div>
     </>
   );
 }
-
-export const getServerSideProps = async () => {
-  const date = new Date();
-  let day = date.getDate() - 1;
-  let month = date.getMonth() + 1;
-  let year = date.getFullYear();
-
-  const apiResponse = await fetch();
-
-  // {
-  //   headers: {
-  //     Authorization: `Bearer ${process.env.NEXT_PUBLIC_WEATHER_KEY}`,
-  //   },
-  // }
-  const apiJson = await apiResponse.json();
-  let { weather } = apiJson;
-  console.log(apiResponse);
+let date = new Date().toLocaleString("en-US", { timeZone: "Asia/Taipei" });
+console.log(date); // 6/17/2022
+// city id 1668341
+export async function getServerSideProps() {
+  const res = await fetch(
+    `https://api.openweathermap.org/data/2.5/weather?lat=25.105497&lon=121.597366&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}&units=metric`
+  );
+  const data = await res.json();
+  console.log(data);
   return {
-    props: { weather },
+    props: {
+      data,
+    },
   };
-};
-
-/*
-[{"name":"Taiwan ROC","place_id":"taiwan-1668284","adm_area1":null,"adm_area2":null,"country":"Taiwan ROC","lat":"24.0N","lon":"121.0E","timezone":"Asia/Taipei","type":"country"},{"name":"Taiwan","place_id":"taiwan-7280291","adm_area1":"Taiwan","adm_area2":null,"country":"Taiwan ROC","lat":"24.15114N","lon":"120.70541E","timezone":"Asia/Taipei","type":"administrative_area"},{"name":"New Taipei City","place_id":"new-taipei","adm_area1":"Taipei","adm_area2":"New Taipei City","country":"Taiwan ROC","lat":"24.94702N","lon":"121.58175E","timezone":"Asia/Taipei","type":"administrative_area"},{"name":"Formosa","place_id":"taiwan-1668285","adm_area1":null,"adm_area2":null,"country":"Taiwan ROC","lat":"23.83847N","lon":"120.96614E","timezone":"Asia/Taipei","type":"island"}]
-
-*/
+}

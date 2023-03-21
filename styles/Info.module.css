@@ -1,0 +1,51 @@
+.container {
+  width: 60%;
+  background-color: #6eac7d;
+  margin: auto;
+  border-radius: 13px;
+  font-family: georgia;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 30px 0px;
+  color: white;
+}
+.left {
+  width: 300px;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.temp {
+  font-size: 1.5rem;
+  margin: 15px 0;
+}
+.location {
+  font-size: 1.5rem;
+  padding: 0;
+  margin: 0;
+}
+.flex_wrap {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 90px;
+}
+.desc,
+.temp_max,
+.temp_min,
+.sun {
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+.temp_max,
+.temp_min {
+  margin-bottom: 15px;
+}
+.weather {
+  margin: 0;
+  font-size: 1.5rem;
+}
