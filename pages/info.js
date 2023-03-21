@@ -2,9 +2,14 @@ import Toolbar from "../components/toolbar";
 import moment from "moment";
 import Image from "next/image";
 import styles from "../styles/Info.module.css";
+import Head from "next/head";
+
 export default function Info({ data }) {
   return (
     <>
+      <Head>
+        <title>Taiwan Matters</title>
+      </Head>
       <Toolbar />
       <div className={styles.container}>
         <div className={styles.left}>

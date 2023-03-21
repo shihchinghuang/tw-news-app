@@ -1,11 +1,14 @@
 import Toolbar from "../components/toolbar";
 import styles from "../styles/Feed.module.css";
-// import ClockTime from "../components/clockTime";
+import Head from "next/head";
+
 export default function Feed({ articles }) {
   return (
     <>
+      <Head>
+        <title>Taiwan Matters</title>
+      </Head>
       <Toolbar />
-      {/* <ClockTime /> */}
       <div className={styles.main}>
         {articles.map((article, index) => {
           return (
