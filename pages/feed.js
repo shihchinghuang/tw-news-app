@@ -1,11 +1,11 @@
 import Toolbar from "../components/toolbar";
 import styles from "../styles/Feed.module.css";
-import ClockTime from "../components/clockTime";
+// import ClockTime from "../components/clockTime";
 export default function Feed({ articles }) {
   return (
     <>
       <Toolbar />
-      <ClockTime />
+      {/* <ClockTime /> */}
       <div className={styles.main}>
         {articles.map((article, index) => {
           return (

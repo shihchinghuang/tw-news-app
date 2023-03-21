@@ -1,20 +1,27 @@
 import Link from "next/link";
 import styles from "../styles/Toolbar.module.css";
 import Image from "next/image";
+import ClockTime from "./clockTime";
 export default function Toolbar() {
   return (
     <>
       <div className={styles.main}>
-        <Link className={styles.feed} href="/">
-          <Image
-            src="https://www.twicon.page/imgs/taiwan-island.svg"
-            width={60}
-            height={60}
-            className={styles.img}
-            alt="tw-logo"
-          ></Image>
+        <Link href="/" className={styles.link}>
+          <div>
+            <h1 className={styles.header}>Taiwan Matters</h1>
+            <div className={styles.icon}>
+              <Image
+                src="https://www.twicon.page/imgs/taiwan-island.svg"
+                width={30}
+                height={30}
+                className={styles.img}
+                alt="tw-logo"
+              ></Image>
+            </div>
+          </div>
         </Link>
-        <div>
+        <ClockTime />
+        <div className={styles.right}>
           <div>
             <Link className={styles.link} href="/feed">
               Feed

@@ -11,7 +11,7 @@ export default function ClockTime() {
         ticking={true}
         noSsr={true}
       />
-      <p>Time Zone - Taiwan (GMT+8)</p>
+      <p className={styles.desc}>Time Zone - Taiwan (GMT+8)</p>
     </div>
   );
 }

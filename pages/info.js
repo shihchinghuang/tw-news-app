@@ -1,13 +1,11 @@
 import Toolbar from "../components/toolbar";
-import ClockTime from "../components/clockTime";
 import moment from "moment";
 import Image from "next/image";
 import styles from "../styles/Info.module.css";
 export default function Info({ data }) {
   return (
     <>
-      <Toolbar></Toolbar>
-      <ClockTime />
+      <Toolbar />
       <div className={styles.container}>
         <div className={styles.left}>
           <p className={styles.location}>Taipei City, Taiwan</p>
@@ -58,7 +56,6 @@ export async function getServerSideProps() {
     `https://api.openweathermap.org/data/2.5/weather?lat=25.105497&lon=121.597366&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}&units=metric`
   );
   const data = await res.json();
-  console.log(data);
   return {
     props: {
       data,
