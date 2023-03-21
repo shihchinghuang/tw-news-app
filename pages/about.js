@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import axios from "axios";
 import styles from "../styles/About.module.css";
+import Head from "next/head";
+
 export default function About() {
   const [isCopied, setIsCopied] = useState(false);
   const {
@@ -49,6 +51,9 @@ export default function About() {
   };
   return (
     <>
+      <Head>
+        <title>Taiwan Matters</title>
+      </Head>
       <Toolbar></Toolbar>
       <div className={styles.container}>
         <p>Hi there - </p>
