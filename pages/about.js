@@ -54,6 +54,11 @@ export default function About() {
         <p>Hi there - </p>
         <br />
         <p>
+          This website aims to source the content of news and information which
+          include the “Taiwan” keyword around the world to acquire narratives
+          about Taiwan from diverse perspectives of the world.
+          <br />
+          <br />
           Would love to connect through{" "}
           <a
             target="_blank"
