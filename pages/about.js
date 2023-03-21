@@ -36,7 +36,7 @@ export default function About() {
   const onSubmitForm = async (value) => {
     let config = {
       method: "post",
-      url: "http://localhost:3000/api/contact",
+      url: "./api/contact.js",
       headers: { "Content-type": "application/json" },
       data: value,
     };
