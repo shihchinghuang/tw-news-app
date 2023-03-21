@@ -6,7 +6,7 @@ export default function Toolbar() {
   return (
     <>
       <div className={styles.main}>
-        <Link href="/" className={styles.link}>
+        <Link href="/feed" className={styles.link}>
           <div>
             <h1 className={styles.header}>Taiwan Matters</h1>
             <div className={styles.icon}>
