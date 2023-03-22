@@ -1,4 +1,4 @@
-## [Taiwan Matters](https://taiwan-matters.vercel.app/)
+## [Taiwan Matters](https://taiwan-matters.vercel.app/feed)
 A news and info app created with Next.js
 
 ## Table of contents
