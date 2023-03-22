@@ -41,7 +41,7 @@ export default function Feed({ articles }) {
 
 export const getServerSideProps = async () => {
   let date = new Date();
-  let day = date.getDate() - 1;
+  let day = date.getDate() - 2;
   let month = date.getMonth() + 1;
   let year = date.getFullYear();
   const apiResponse = await fetch(
