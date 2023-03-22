@@ -36,7 +36,7 @@ export default function About() {
   const onSubmitForm = async (value) => {
     let config = {
       method: "post",
-      url: `${process.env.NEXT_PUBLIC_API_URL}/api/contact`,
+      url: `https://taiwan-matters.vercel.app/api/contact`,
       headers: { "Content-type": "application/json" },
       data: value,
     };
