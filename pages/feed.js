@@ -1,6 +1,7 @@
 import Toolbar from "../components/toolbar";
 import styles from "../styles/Feed.module.css";
 import Head from "next/head";
+import Image from "next/image";
 
 export default function Feed({ articles }) {
   return (
@@ -17,7 +18,6 @@ export default function Feed({ articles }) {
                 <a className={styles.link} href={article.url} target="_blank">
                   <h1 className={styles.title}>{article.title}</h1>
                   <p className={styles.desc}>{article.description}</p>
-
                   <img
                     className={styles.img}
                     src={article.urlToImage}
