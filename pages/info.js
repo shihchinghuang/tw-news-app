@@ -3,6 +3,7 @@ import moment from "moment";
 import Image from "next/image";
 import styles from "../styles/Info.module.css";
 import Head from "next/head";
+import Map from "../components/map";
 
 export default function Info({ data }) {
   return (
@@ -51,6 +52,9 @@ export default function Info({ data }) {
           />
           <p className={styles.weather}>{data.weather[0].main}</p>
         </div>
+      </div>
+      <div>
+        <Map />
       </div>
     </>
   );
