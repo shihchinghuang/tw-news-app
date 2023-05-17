@@ -3,7 +3,7 @@ import mapboxgl from "!mapbox-gl";
 import styles from "../styles/Map.module.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-mapboxgl.accessToken = process.env.MAPBOX_KEY;
+mapboxgl.accessToken = `${process.env.NEXT_PUBLIC_MAPBOX_KEY}`;
 
 export default function App() {
   const mapContainer = useRef(null);
