@@ -14,7 +14,9 @@ export default function Feed({ articles, data }) {
       <Toolbar />
 
       <div className={styles.headline}>
-        <p className={styles.headlineDesc}>🌟 Recently, this matters most: </p>
+        <p className={styles.headlineDesc}>
+          🌟 Recently, this matters the most:{" "}
+        </p>
         <a
           className={styles.headlineLink}
           href={data[0].web_url}
@@ -46,10 +48,10 @@ export default function Feed({ articles, data }) {
 
       <img src="/down-arrow.png" className={styles.downArrow} />
       <div className={styles.main}>
-        {articles.map((article, index) => {
+        {articles.map((article, key) => {
           return (
             <>
-              <div className={styles.section} key={index}>
+              <div className={styles.section} key={key}>
                 <a className={styles.link} href={article.url} target="_blank">
                   <h1 className={styles.title}>{article.title}</h1>
                   <p className={styles.desc}>{article.description}</p>
@@ -96,12 +98,13 @@ export const getServerSideProps = async () => {
   let data = apiJsonNYT.response.docs;
   data = data.filter(
     (item) =>
-      item.abstract.includes("taiwan") || item.abstract.includes("Taiwan")
+      item.abstract.includes("Taiwan") ||
+      item.lead_paragraph.includes("Taiwan") ||
+      item.snippet.includes("Taiwan")
   );
   articles = articles.filter(
     (article) => article.urlToImage && article.title.includes("Taiwan")
   );
-
   return {
     props: { articles, data },
   };
