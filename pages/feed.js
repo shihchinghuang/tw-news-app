@@ -3,50 +3,58 @@ import styles from "../styles/Feed.module.css";
 import Head from "next/head";
 
 export default function Feed({ articles, data }) {
-  let headlineImg = data[0].multimedia.filter(
-    (item) => item.subtype === "facebookJumbo"
-  );
+  let headlineImg =
+    data.length === 0 || !data
+      ? ""
+      : data[0].multimedia.filter((item) => item.subtype === "facebookJumbo");
   return (
     <>
       <Head>
         <title>Taiwan Matters</title>
       </Head>
       <Toolbar />
+      {data.length === 0 || !data ? (
+        ""
+      ) : (
+        <>
+          <div className={styles.headline}>
+            <p className={styles.headlineDesc}>
+              🌟 Recently, this matters the most:
+            </p>
 
-      <div className={styles.headline}>
-        <p className={styles.headlineDesc}>
-          🌟 Recently, this matters the most:{" "}
-        </p>
-        <a
-          className={styles.headlineLink}
-          href={data[0].web_url}
-          target="_blank"
-        >
-          <div className={styles.headlineStory}>
-            <div>
-              <img
-                className={styles.headlineImg}
-                src={`https://www.nytimes.com/${headlineImg[0].url}`}
-                alt="photo"
-              />
-            </div>
-            <div>
-              <p className={styles.headlineTitle}>{data[0].headline.main}</p>
-              <p className={styles.desc}>
-                {data[0].abstract}
-                <br />
-                {data[0].lead_paragraph}
-              </p>
-              <div className={styles.headlineSrc}>
-                <p>{data[0].pub_date.split("T").join(" ").slice(0, 16)}</p>
-                <p>{data[0].source}</p>
+            <a
+              className={styles.headlineLink}
+              href={data[0].web_url}
+              target="_blank"
+            >
+              <div className={styles.headlineStory}>
+                <div>
+                  <img
+                    className={styles.headlineImg}
+                    src={`https://www.nytimes.com/${headlineImg[0].url}`}
+                    alt="photo"
+                  />
+                </div>
+                <div>
+                  <p className={styles.headlineTitle}>
+                    {data[0].headline.main}
+                  </p>
+                  <p className={styles.desc}>
+                    {data[0].abstract}
+                    <br />
+                    {data[0].lead_paragraph}
+                  </p>
+                  <div className={styles.headlineSrc}>
+                    <p>{data[0].pub_date.split("T").join(" ").slice(0, 16)}</p>
+                    <p>{data[0].source}</p>
+                  </div>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
-        </a>
-      </div>
-
-      <img src="/down-arrow.png" className={styles.downArrow} />
+          <img src="/down-arrow.png" className={styles.downArrow} />
+        </>
+      )}
       <div className={styles.main}>
         {articles.map((article, key) => {
           return (
@@ -96,6 +104,7 @@ export const getServerSideProps = async () => {
   );
   let apiJsonNYT = await apiResponseNYT.json();
   let data = apiJsonNYT.response.docs;
+
   data = data.filter(
     (item) =>
       item.abstract.includes("Taiwan") ||
