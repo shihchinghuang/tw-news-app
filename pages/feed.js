@@ -4,8 +4,8 @@ import Head from "next/head";
 
 export default function Feed({ articles, data }) {
   let headlineImg =
-    data.length === 0 || !data
-      ? ""
+    data.length === 0 || !data || data[0].multimedia.length === 0
+      ? null
       : data[0].multimedia.filter((item) => item.subtype === "facebookJumbo");
   return (
     <>
@@ -29,11 +29,15 @@ export default function Feed({ articles, data }) {
             >
               <div className={styles.headlineStory}>
                 <div>
-                  <img
-                    className={styles.headlineImg}
-                    src={`https://www.nytimes.com/${headlineImg[0].url}`}
-                    alt="photo"
-                  />
+                  {headlineImg ? (
+                    <img
+                      className={styles.headlineImg}
+                      src={`https://www.nytimes.com/${headlineImg[0]?.url}`}
+                      alt="photo"
+                    />
+                  ) : (
+                    ""
+                  )}
                 </div>
                 <div>
                   <p className={styles.headlineTitle}>
@@ -46,7 +50,9 @@ export default function Feed({ articles, data }) {
                   </p>
                   <div className={styles.headlineSrc}>
                     <p>{data[0].pub_date.split("T").join(" ").slice(0, 16)}</p>
-                    <p>{data[0].source}</p>
+                    <p>
+                      {data[0].source ? data[0].source : "The New York Times"}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -111,6 +117,7 @@ export const getServerSideProps = async () => {
       item.lead_paragraph.includes("Taiwan") ||
       item.snippet.includes("Taiwan")
   );
+  console.log(data[0].source);
   articles = articles.filter(
     (article) => article.urlToImage && article.title.includes("Taiwan")
   );
