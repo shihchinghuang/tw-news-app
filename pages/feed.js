@@ -117,7 +117,7 @@ export const getServerSideProps = async () => {
       item.lead_paragraph.includes("Taiwan") ||
       item.snippet.includes("Taiwan")
   );
-  console.log(data[0].source);
+
   articles = articles.filter(
     (article) => article.urlToImage && article.title.includes("Taiwan")
   );
